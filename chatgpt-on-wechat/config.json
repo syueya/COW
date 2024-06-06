@@ -1,5 +1,5 @@
 {
-  "open_ai_api_key": "sk-QlKKnldWuEeF3gjQ46A3FfE15f0d48F5873dD7F79a4e6828",
+  "open_ai_api_key": "",
   "open_ai_api_base": "http://192.168.31.31:3005/v1",
   "proxy": "",
   "model": "gpt-4",
@@ -16,7 +16,7 @@
   "group_at_off": false,
   "group_name_white_list": ["ALL_GROUP"],
   "group_name_keyword_white_list": [],
-  "group_chat_in_one_session": ["nas吹水28群", "一个老大和两个小弟", "发财群"],
+  "group_chat_in_one_session": [""一个老大和两个小弟", "发财群"],
   "nick_name_black_list": [],
   "group_welcome_msg": "",
   "trigger_by_self": false,
