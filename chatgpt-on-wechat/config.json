@@ -16,7 +16,7 @@
   "group_at_off": false,
   "group_name_white_list": ["ALL_GROUP"],
   "group_name_keyword_white_list": [],
-  "group_chat_in_one_session": ["一个老大和两个小弟"， "发财群"],
+  "group_chat_in_one_session": ["发财群"],
   "nick_name_black_list": [],
   "group_welcome_msg": "",
   "trigger_by_self": false,
