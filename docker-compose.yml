@@ -1,0 +1,111 @@
+# xxx-free-api 系列服务未映射端口，容器内部接口默认为 8000，需要外部访问请自行添加端口映射
+# one-api 渠道代理格式: http://xxx-free-api:8000
+
+# 相关文档
+# https://github.com/LLM-Red-Team
+# https://docs.link-ai.tech/cow/quick-start
+
+version: "3"
+services:
+  one-api:
+    container_name: one-api
+    image: justsong/one-api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      # 修改挂载目录
+      - /opt/docker/Oneapi/data:/data
+    depends_on:
+      - kimi-free-api
+      - step-free-api
+      - qwen-free-api
+      - glm-free-api
+      - hailuo-free-api
+
+  #Kimi.ai https://kimi.moonshot.cn refresh_token
+  kimi-free-api:
+    container_name: kimi-free-api
+    image: vinlic/kimi-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #跃问Step https://stepchat.cn Oasis-Token
+  step-free-api:
+    container_name: step-free-api
+    image: vinlic/step-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #阿里Qwen https://tongyi.aliyun.com/qianwen login_tongyi_ticket
+  qwen-free-api:
+    container_name: qwen-free-api
+    image: vinlic/qwen-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #智谱清言 https://chatglm.cn chatglm_refresh_token
+  glm-free-api:
+    container_name: glm-free-api
+    image: vinlic/glm-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #秘塔AI  https://metaso.cn uid和sid拼接，格式：uid-sid
+  metaso-free-api:
+    container_name: metaso-free-api
+    image: vinlic/metaso-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #讯飞星火 https://xinghuo.xfyun.cn  ssoSessionId
+  spark-free-api:
+    container_name: spark-free-api
+    image: vinlic/spark-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #海螺AI https://hailuoai.com _token
+  hailuo-free-api:
+    container_name: hailuo-free-api
+    image: vinlic/hailuo-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #深度求索 https://chat.deepseek.com userToken value
+  deepseek-free-api:
+    container_name: deepseek-free-api
+    image: vinlic/deepseek-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  #聆心智能 https://echo.turing-world.com token
+  emohaa-free-api:
+    container_name: emohaa-free-api
+    image: vinlic/emohaa-free-api:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+
+  # https://github.com/zhayujie/chatgpt-on-wechat
+  chatgpt-on-wechat:
+    image: zhayujie/chatgpt-on-wechat
+    container_name: chatgpt-on-wechat
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      # 修改挂载目录
+      - /opt/docker/COW/config.json:/app/config.json
+      - /opt/docker/COW/plugins/config.json:/app/plugins/config.json
+      - /opt/docker/COW/plugins/godcmd/godcmd.py:/app/plugins/godcmd/godcmd.py
+      - /opt/docker/COW/voice/openai_voice.py:/app/voice/openai_voice.py
